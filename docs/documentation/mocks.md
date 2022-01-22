@@ -4,7 +4,7 @@ Creating Mocks
 The `Phake::mock()` method is how you create new test doubles in Phake. You pass in the class name of what you would
 like to mock.
 
-```
+```php-inline
 $mock = Phake::mock(ClassToMock::class);
 ```
 
@@ -19,14 +19,14 @@ with the proper parameters. This will be covered in depth in :ref:`method-verifi
 In addition to classes you can also mock interfaces directly. This is done in much the same way as a class name, you
 simply pass the interface name as the first parameter to `Phake::mock()`.
 
-```
+```php-inline
 $mock = Phake::mock(InterfaceToMock::class);
 ```
 
 You can also pass an array of interface names to `Phake::mock()` that also contains up to 1 class name. This allows
 for easier mocking of a dependency that is required to implement multiple interfaces.
 
-```
+```php-inline
 $mock = Phake::mock([ Interface1::class, Interface2::class ]);
 ```
 
@@ -46,7 +46,7 @@ you were using `thenCallParent()`.
 
 Consider the following class that has a method that simply returns the value passed into the constructor.
 
-```
+```php-inline
 class MyClass
 {
     private $value;
@@ -67,7 +67,7 @@ Using `Phake::partialMock()` you can instantiate a mock object that will allow t
 as designed while still allowing verification as well as selective stubbing of certain calls.
 Below is an example that shows the usage of `Phake::partialMock()`.
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
     public function testCallingParent()
@@ -94,7 +94,7 @@ return whatever value was previously stubbed for that method call. So if you int
 and you aren't using :ref:`partial-mocks`, then you can just enable :ref:`calling-the-parent` for that method call using
 the `thenCallParent()` answer. This is all discussed in greater depth in :ref:`method-stubbing` and :ref:`answers`.
 
-```
+```php-inline
 class MyClass
 {
     private function foo()
@@ -109,7 +109,7 @@ class MyClass
 
 Given the class above, you can invoke both private methods with the code below.
 
-```
+```php-inline
 $mock = Phake::mock(MyClass::class);
 
 Phake::makeVisible($mock)->foo();
@@ -131,7 +131,7 @@ Consider this really poor object oriented code. The cleanRowContent() function d
 stripping html tags, cleaning up links, etc. It turns out that the original version of this method is written in a very
 unperformant manner and I have been tasked with rewriting it.
 
-```
+```php-inline
 class MyReallyTerribleOldClass
 {
     public function __construct(Database $db)
@@ -167,7 +167,7 @@ class MyReallyTerribleOldClass
 If I was about to make changes to cleanRowContent and wanted to make sure I didn't break previous functionality, in order to
 do so with the traditional fixture I would have to write a test similar to the following:
 
-```
+```php-inline
 class Test extends PHPUnit\Framework\TestCase
 {
     public function testProcessRow()
@@ -195,7 +195,7 @@ and use cases for the cleanRowContent(). However this test is doing alot of work
 your test is hitting code not relevant to your test in increases the test's fragility. Here is how you could test the
 same code using `Phake::makeVisible()`.
 
-```
+```php-inline
 class Test extends PHPUnit\Framework\TestCase
 {
     public function testProcessRow()

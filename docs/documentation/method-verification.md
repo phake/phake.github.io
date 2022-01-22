@@ -10,7 +10,7 @@ record the method that you called along with all of the parameters used to call 
 `Phake::verify()` will look at that recording and allow you to assert whether
 or not a certain call was made.
 
-```
+```php-inline
 class PhakeTest1 extends PHPUnit\Framework\TestCase
 {
 	public function testBasicVerify()
@@ -49,7 +49,7 @@ use `Phake::verify()` multiple times on the same object. A notable difference be
 framework is the ability to mock multiple invocations of the same method with no regard for call sequences. The PHPUnit
 mocking test below would fail for this reason.
 
-```
+```php-inline
 class MyTest extends PHPUnit\Framework\TestCase
 {
 	public function testPHPUnitMock()
@@ -72,7 +72,7 @@ The reason this test fails is because by default PHPUnit only allows a single ex
 fix this is by using the `at()` matcher. This allows you to specify the index of the invocation you want to match
 again. So to make the test above work you would have to change it.
 
-```
+```php-inline
 class MyTest extends PHPUnit\Framework\TestCase
 {
 	public function testPHPUnitMock()
@@ -100,7 +100,7 @@ that code structure through a unit test. Unfortunately, you cannot have multiple
 without enforcing call order. In Phake these two notions of call order and multiple invocations are kept completely
 distinct. Here is the same test written using Phake.
 
-```
+```php-inline
 class MyTest extends PHPUnit\Framework\TestCase
 {
 	public function testPHPUnitMock()
@@ -131,7 +131,7 @@ parameters. If no value is specified then the default of one is used. The other 
 
 Here is an example of this in action.
 
-```
+```php-inline
 class MyTest extends PHPUnit\Framework\TestCase
 {
 	public function testPHPUnitMock()
@@ -157,7 +157,7 @@ sequential order, there can be other calls in between, it just ensures the speci
 order relative to each other. Below is an example Phake test that behaves similarly to the PHPUnit test that utilized
 `at()`.
 
-```
+```php-inline
 class MyTest extends PHPUnit\Framework\TestCase
 {
 	public function testPHPUnitMock()
@@ -200,7 +200,7 @@ check and make sure that all calls to your mock have been verified by one or mor
 should only be used in those cases where you can clearly say that it is important that your test knows about all calls
 on a particular object. One useful case for instance could be in testing a method that returns a filtered array.
 
-```
+```php-inline
 class FilterTest {
 	public function testFilteredList()
 	{
@@ -231,7 +231,7 @@ mocking the method passed in as the first parameter.
 
 Consider the following class.
 
-```
+```php-inline
 class MagicClass
 {
 	public function __call($method, $args)
@@ -243,7 +243,7 @@ class MagicClass
 
 You could mock an invocation of the `__call()` method through a userspace call to magicCall() with the following code.
 
-```
+```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testMagicCall()
@@ -259,7 +259,7 @@ class MagicClassTest extends PHPUnit\Framework\TestCase
 
 If for any reason you need to explicitly verify calls to `__call()` then you can use `Phake::verifyCallMethodWith()`.
 
-```
+```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testMagicCall()

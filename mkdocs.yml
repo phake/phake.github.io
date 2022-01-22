@@ -7,6 +7,16 @@ edit_uri: ""
 extra_css:
   - stylesheets/extra.css
 
+markdown_extensions:
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences
+
 theme:
   name: material
   features:

@@ -5,7 +5,7 @@ Phake can be used to verify as well as stub polymorphic calls to static methods.
 cannot verify or stub all static calls. In order for Phake to record or stub a method call, it needs to intercept the
 call so that it can record it. Consider the following class
 
-```
+```php-inline
 class StaticCaller
 {
 	public function callStaticMethod()
@@ -19,7 +19,7 @@ You will not be able to stub or verify the call to Foo::staticMethod() because t
 This prevents Phake from seeing that the call was made. However, say you have an abstract class that has an abstract
 static method.
 
-```
+```php-inline
 abstract class StaticFactory
 {
 	protected static function factory()
@@ -51,7 +51,7 @@ resolve that object down to the class name and use that for the static.
 
 So, the general idea here is that you can take code that is in class Foo:
 
-```
+```php-inline
 class Foo
 {
 	public function doSomething()
@@ -64,7 +64,7 @@ class Foo
 
 which does not provide a seam for mocking Logger::logData() and provide that seem by changing it to:
 
-```
+```php-inline
 class Foo
 {
 	public $logger = 'Logger';
@@ -79,7 +79,7 @@ class Foo
 
 Now you can mock logData as follows:
 
-```
+```php-inline
 class FooTest
 {
 	public function testDoSomething()

@@ -13,7 +13,7 @@ test your exception handling is to be able to control the throwing of your excep
 example of a piece of code that catches an exception from the method foo() and then logs a message with the exception
 message.
 
-```
+```php-inline
 class MyClass
 {
 	private Logger $logger;
@@ -40,7 +40,7 @@ class MyClass
 In order to test this we must mock `foo()` so that it throws an exception when it is called. Then we can verify that
 `log()` is called with the appropriate message.
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testProcessSomeDataLogsExceptions()
@@ -67,7 +67,7 @@ Phake provides the ability to allow calling the actual method of an object on a 
 basis by using the `thenCallParent()` answer. This will result in the actual method being called.
 Consider the following class.
 
-```
+```php-inline
 class MyClass
 {
 	public function foo()
@@ -80,7 +80,7 @@ class MyClass
 The `thenCallParent()` answer can be used here to ensure that the actual method in the class is
 called resulting in the value 42 being returned from calls to that mocked method.
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testCallingParent()
@@ -128,7 +128,7 @@ The callback will be passed the same arguments as were passed to the method bein
 to help determine the answer.
 
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testCallback()

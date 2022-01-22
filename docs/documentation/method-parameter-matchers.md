@@ -10,7 +10,7 @@ the default matcher will ensure that the parameter you pass to the mock method i
 notation) to the parameter passed to the actual invocation before validating the call or returning the mocked stub. So
 going back to the card game demonstration from the introduction. Consider the following interface:
 
-```
+```php-inline
 interface DealerStrategy
 {
 	public function deal(CardCollection $deck, PlayerCollection $players);
@@ -22,7 +22,7 @@ are very good that you want to verify the the parameters as well. To do this is 
 to the `deal()` method on the `Phake::verify($deal)` object just as you would if you were calling the actual
 `deal()` method itself. Here is a short albeit silly example:
 
-```
+```php-inline
 // I don't have Concrete versions of CardCollection or PlayerCollection yet
 $deck = Phake::mock(CardCollection::class);
 $players = Phake::mock(PlayerCollection::class);
@@ -38,13 +38,10 @@ Phake::verify($dealer)->deal($deck, $players);
 In this example, if I were to have accidentally made the call to `deal()` with a property that was set to null as the
 first parameter then my test would fail with the following exception
 
-```
-Expected DealerStrategy->deal(equal to
-<object:CardCollection>, equal to <object:PlayerCollection>)
-to be called exactly 1 times, actually called 0 times.
+```console
+Expected DealerStrategy->deal(equal to <object:CardCollection>, equal to <object:PlayerCollection>) to be called exactly 1 times, actually called 0 times.
 Other Invocations:
-  PhakeTest_MockedClass->deal(<null>,
-equal to <object:PlayerCollection>)
+  PhakeTest_MockedClass->deal(<null>, equal to <object:PlayerCollection>)
 ```
 
 Determining the appropriate method to stub works in exactly the same way.
@@ -59,7 +56,7 @@ Phake was developed with PHPUnit in mind. It is not dependent on PHPUnit, howeve
 of choice there is some special integration available. Any constraints made available by the PHPUnit framework will
 work seamlessly inside of Phake. Here is an example of how the [PHPUnit constraints ](https://phpunit.de/manual/current/en/appendixes.assertions.html#appendixes.assertions.assertThat.tables.constraints) can be used:
 
-```
+```php-inline
 class TestPHPUnitConstraint extends PHPUnit\Framework\TestCase
 {
 	public function testDealNumberOfCards()
@@ -90,7 +87,7 @@ If you do not use PHPUnit, Phake also supports [Hamcrest matchers ](https://gith
 usable with any testing framework. Here is a repeat of the PHPUnit example, this time using SimpleTest and Hamcrest
 matchers.
 
-```
+```php-inline
 class TestHamcrestMatcher extends UnitTestCase
 {
 	public function testDealNumberOfCards()
@@ -118,7 +115,7 @@ To specify that a given stub or verification method should match any parameters,
 or mocking as a property of `Phake::when()` or `Phake::verify()`. The code below will mock any invocation of
 `$obj->foo()` regardless of parameters to return bar.
 
-```
+```php-inline
 class FooTest extends PHPUnit\Framework\TestCase
 {
 	public function testAddItemsToCart()
@@ -148,7 +145,7 @@ A good example of where this could be handy is if you are mocking or verifying a
 important to stubbing but maybe the remaining parameters aren't. The code below stubs a factory method where the first
 parameter sets an item's name, but the remaining parameters are all available as defaults.
 
-```
+```php-inline
 class MyFactory
 {
 	public function createItem($name, $color = 'red', $size = 'large')
@@ -182,7 +179,7 @@ assertions later on.
 
 Consider the following example where I have defined a `getNumberOfCards()` method on the `CardCollection` interface.
 
-```
+```php-inline
 interface CardCollection
 {
 	public function getNumberOfCards();
@@ -197,7 +194,7 @@ something like this.
 Please note, I do not generally advocate this type of design. I prefer dependency injection to instantiation. So
 please remember, this is not an example of clean design, simply an example of what you can do with argument capturing.
 
-```
+```php-inline
 class MyPokerGameTest extends PHPUnit\Framework\TestCase
 {
 	public function testDealCards()
@@ -220,7 +217,7 @@ using the the `Phake::capture()->when()` method. The `when()` method accepts the
 `Phake::verify()` accepts. Here is how you could leverage that functionality to bulletproof your captures a little
 bit.
 
-```
+```php-inline
 class MyBetterPokerGameTest extends PHPUnit\Framework\TestCase
 {
 	public function testDealCards()
@@ -244,7 +241,7 @@ class MyBetterPokerGameTest extends PHPUnit\Framework\TestCase
 This could also be done by using PHPUnit's assertions later on with the captured parameter, however this also has a
 side effect of better localizing your error. Here is the error you would see if the above test failed.
 
-```
+```console
 Exception: Expected MyPokerDealer->deal(<captured parameter>,
 equal to <object:PlayerCollection>) to be called exactly 1
 times, actually called 0 times.
@@ -261,7 +258,7 @@ test failures to diagnose.
 Beginning in Phake 2.1 you can also capture all values for a given parameter for every matching invocation. For
 instance imagine if you have a method `$foo->process($eventManager)` that should send a series of events.
 
-```
+```php-inline
 class Foo
 {
 	// ...
@@ -279,7 +276,7 @@ and brittle using standard argument captors. There is now a new method `Phake::c
 capture all otherwise matching invocations of method. The variable passed to `Phake::captureAll()` will be set to an
 array containing all of the values used for that parameter. So with this function the following test can be written.
 
-```
+```php-inline
 class FooTest
 {
 	public function testProcess()
@@ -309,7 +306,7 @@ An alternative to using argument capturing is creating custom matchers. All para
 if you find yourself using a similar capturing pattern over and over again. If I were to rewriting the test above using
 a customer argument matcher it would look something like this.
 
-```
+```php-inline
 class FiftyTwoCardDeckMatcher implements Phake\Matchers\IArgumentMatcher
 {
 	public function matches(&$argument)

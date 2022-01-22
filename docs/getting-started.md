@@ -9,7 +9,7 @@ Composer Install
 Phake can be installed via [Composer](https://github.com/composer/composer). You will typically want to install Phake
 as a development requirement. To do so you can run the command :
 
-```
+```{.console title="Installing using composer"}
 composer require --dev phake/phake
 ```
 

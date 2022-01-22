@@ -15,7 +15,7 @@ in a shopping cart is going to have a price. So I will just create an interface 
 items called Item. Now take a minute to marvel at the creativity of those
 names. Great, now check out the initial definitions for my objects.
 
-```
+```php-inline
 /**
  * An item that is going to make me rich.
  */
@@ -68,7 +68,7 @@ Never fear, this is why I decided to use Phake. I remember reading about how it 
 quickly create instance of my classes and interfaces that I can set up stubs for so that method
 calls return predictable values. This project is all coming together and I am really excited.
 
-```
+```php-inline
 class ShoppingCartTest extends PHPUnit\Framework\TestCase
 {
 	public function testGetSub()
@@ -99,7 +99,7 @@ order.
 
 My test is written so now it is time to see how it fails. I run it with phpunit and see the output below
 
-```
+```console
 $ phpunit ExampleTests/ShoppingCartTest.php
 PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 
@@ -121,7 +121,7 @@ Tests: 1, Assertions: 1, Failures: 1.
 Now that I have a working (and I by working I mean breaking!) test it is time to look at the code necessary to make
 the test pass.
 
-```
+```php-inline
 class ShoppingCart
 {
 	// I am cutting out the already seen code.
@@ -148,7 +148,7 @@ The code here is pretty simple. I am just iterating over the `ShoppingCart::$ite
 calling the `Item::getPrice()` method, and adding them all together. Now when I run phpunit, the tests were successful
 and I am getting off to a great start with my shopping cart.
 
-```
+```console
 $ phpunit ExampleTests/ShoppingCartTest.php
 PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 
@@ -205,7 +205,7 @@ After doing some further research, I realize I made a silly mistake. I am just u
 costs. Floats are by nature inaccurate. Once you start using them in mathematical operations they start to show their
 inadequacy for precision. In keeping with the test driven method of creating code I need to create a unit test this flaw.
 
-```
+```php-inline
 class ShoppingCartTest extends PHPUnit\Framework\TestCase
 {
 	  public function testGetSub()
@@ -249,7 +249,7 @@ class ShoppingCartTest extends PHPUnit\Framework\TestCase
 You can see that I added another test method that uses actual floats for some of the prices as opposed to round numbers.
 Now when I run my test suite I can see the result.
 
-```
+```console
 $ phpunit ExampleTests/ShoppingCartTest.php
 PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 
@@ -269,7 +269,7 @@ that will be easier to maintain. To overwrite a previous stub you simply have to
 `ShoppingCartTest::testGetSubTotalWithPrecision()` to instead just redefine the `getPrice()`
 stubs.
 
-```
+```php-inline
 class ShoppingCartTest extends PHPUnit\Framework\TestCase
 {
 	private ShoppingCart $shoppingCart;
@@ -326,7 +326,7 @@ you can use `Phake::reset()` and `Phake::resetStatic()`. These will remove all s
 out all recorded calls against a mock. `Phake::reset()` will do this for instance methods on the mock and
 `Phake::resetStatic()` will do this for all static methods on the mock.
 
-```
+```php-inline
 public function testResettingStubMapper()
 {
 	$mock = Phake::mock(PhakeTest_MockedClass::class);
@@ -369,7 +369,7 @@ method to have it return the total price of items in the cart. I figured that th
 to make working with the system a little bit easier. I would like to take advantage of that change with this code.
 Here's a stub of the functionality I am considering.
 
-```
+```php-inline
 /**
  * A group of items that can be added to a cart all at the same time
  */
@@ -401,7 +401,7 @@ last return value from calls to `ShoppingCart::addItem()`. To allow for checking
 `ShoppingCart` and create three stubs for `ShoppingCart::addItem()`. Each
 stub will be for a call with a different `Item`.
 
-```
+```php-inline
 class ItemGroupTest extends PHPUnit\Framework\TestCase
 {
 	private ItemGroup $itemGroup;
@@ -447,7 +447,7 @@ to the order in which objects are stored. Phake provides the ability to map mult
 done simply by chaining the answers together. I could rewrite the test from the previous chapter to utilize this
 feature of Phake.
 
-```
+```php-inline
 class ItemGroupTest extends PHPUnit\Framework\TestCase
 {
 	private ItemGroup $itemGroup;
@@ -500,7 +500,7 @@ that allows you to set reference parameters. It can be accessed using `Phake::se
 The only parameter to this matcher is the value you would like to set the reference parameter
 to provided all other parameters match.
 
-```
+```php-inline
 interface IValidator
 {
 	/**
@@ -585,7 +585,7 @@ of `Phake::setReference()`. This modification will cause the reference parameter
 to be set only if the $errors parameter passed to `IValidator::validate()`
 is initially passed as an empty array.
 
-```
+```php-inline
 class ValidationLoggerTest extends PHPUnit\Framework\TestCase
 {
 	public function testValidate()
@@ -627,7 +627,7 @@ mock in Phake is that its default answer is to pass the call through to the pare
 
 Consider the following class that has a method that simply returns the value passed into the constructor.
 
-```
+```php-inline
 class MyClass
 {
 	private $value;
@@ -648,7 +648,7 @@ Using `Phake::partialMock()` you can instantiate a mock object that will allow t
 as designed while still allowing verification as well as selective stubbing of certain calls.
 Below is an example that shows the usage of `Phake::partialMock()`.
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testCallingParent()
@@ -673,7 +673,7 @@ to specify any of the matchers mentioned above as the default answer if any meth
 stubbed. If this configuration directive is not provided then the method will return NULL by default. An example of
 this can be seen below.
 
-```
+```php-inline
 class MyClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testDefaultStubs()
@@ -695,7 +695,7 @@ targetting in the first parameter to `__call()`.
 
 Consider the following class.
 
-```
+```php-inline
 class MagicClass
 {
 	public function __call($method, $args)
@@ -707,7 +707,7 @@ class MagicClass
 
 You could stub an invocation of the `__call()` method through a userspace call to `magicCall()` with the following code.
 
-```
+```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testMagicCall()
@@ -725,7 +725,7 @@ If for any reason you need to explicitly stub calls to `__call()` then you can u
 The matchers passed to `Phake::whenCallMethod()` will be matched to the method name and array of arguments similar to
 what you would expect to be passed to a `__call()` method. You can also use Phake::anyParameters() instead.
 
-```
+```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase
 {
 	public function testMagicCall()

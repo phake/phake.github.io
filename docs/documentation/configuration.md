@@ -20,7 +20,7 @@ recorded and --strict mode can be safely used with your tests.
 
 To enable the PHPUnit Phake client, you can register it in your test bootstrap.
 
-```
+```php-inline
 require_once('Phake.php');
 Phake::setClient(Phake::CLIENT_PHPUNIT);
 ```
@@ -43,7 +43,7 @@ in files with the same name as the generated class.
 
 Below is an example of the code required to dump mock classes into the /tmp folder.
 
-```
+```php-inline
 require_once('Phake.php');
 require_once('Phake/ClassGenerator/FileLoader.php');
 Phake::setMockLoader(new Phake\ClassGenerator\FileLoader('/tmp'));

@@ -16,7 +16,7 @@ In true Las Vegas spirit I am implementing a new framework that allows you to ea
 new card games. Most every card game at one point or another needs a dealer. In the example below
 I have created a new class called `CardGame` that implements the basic functionality for a card game:
 
-```
+```php-inline
 class CardGame
 {
 	private DealerStrategy   $dealerStrategy;
@@ -54,7 +54,7 @@ instance of `CardGame`, call `dealCards()` and then assert
 the state of those same objects. A test doing
 this might look something like:
 
-```
+```php-inline
 class CardGameTest1 extends PHPUnit\Framework\TestCase
 {
 	public function testDealCards()
@@ -102,22 +102,22 @@ I can then exercise my SUT. Finally, I can verify that the methods that should b
 objects were called correctly. If this test were
 re-written to use Phake, it would become:
 
-```
-    class CardGameTest2 extends PHPUnit\Framework\TestCase
-    {
-        public function testDealCards()
-        {
-            $dealer  = Phake::mock(DealerStrategy::class);
-            $deck    = Phake::mock(CardCollection::class);
-            $players = Phake::mock(PlayerCollection::class);
+```php-inline
+class CardGameTest2 extends PHPUnit\Framework\TestCase
+{
+	public function testDealCards()
+	{
+		$dealer  = Phake::mock(DealerStrategy::class);
+		$deck    = Phake::mock(CardCollection::class);
+		$players = Phake::mock(PlayerCollection::class);
 
-            $cardGame = new CardGame($dealer, $deck, $players);
-            $cardGame->dealCards();
+		$cardGame = new CardGame($dealer, $deck, $players);
+		$cardGame->dealCards();
 
-            Phake::verify($deck)->shuffle();
-            Phake::verify($dealer)->deal($deck, $players);
-        }
-    }
+		Phake::verify($deck)->shuffle();
+		Phake::verify($dealer)->deal($deck, $players);
+	}
+}
 ```
 
 There are three benefits of using mock objects that can be seen through this example. The first benefit
