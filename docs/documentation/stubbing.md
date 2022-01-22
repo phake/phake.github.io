@@ -174,11 +174,11 @@ method being implemented in these new classes does a few different things. The f
 the fact that the method was called and stores the parameters that were used to call it. The next significant thing
 it does is looks at the stub map for that mock object. The stub map is a map that associates answers to method matchers.
 An answer is what a mocked object will return when it is called. By default, a call to a mock object returns a static
-answer of NULL. We will discuss answers more in :ref:`answers`. A method matcher has two parts. The
+answer of NULL. We will discuss answers more in [Answers](./answers.md). A method matcher has two parts. The
 first is the method name. The second is an array of arguments. The array of arguments will then contain various constraints
 that are applied to each argument to see if a given argument will match. The most common constraint is an equality constraint
 that will match loosely along the same lines as the double equals sign in PHP. We will talk about matchers more in
-:ref:`method-parameter-matchers-section`.
+[Method Parameter Matchers](./method-parameter-matchers.md).
 
 When each mock object is initially created, its stub map will be empty. This means that any call to a method on a mock object
 is going to return a default answer of NULL. If you want your mock object's methods to return something else you must add answers
@@ -311,7 +311,7 @@ class ShoppingCartTest extends PHPUnit\Framework\TestCase
 
 If you rerun this test you will get the same results shown in before.
 The test itself is much simpler though there is much less unnecessary duplication. The reason this works is because
-the stub map I was referring to in :ref:`how-phake-when-works` isn't really a map at all. It is more of
+the stub map I was referring to in [How `Phake::when()` works](#how-phakewhen-works) isn't really a map at all. It is more of
 a stack in reality. When a new matcher and answer pair is added to a mock object, it is added to the top of the stack.
 Then whenever a stub method is called, the stack is checked from the top down to find the first matcher that matches
 the method that was called. So, when I created the additional stubs for the various `Item::getPrice()`
@@ -435,7 +435,7 @@ In this example the `ShoppingCart::addItem()` method is being stubbed three time
 is being stubbed with a different parameter being passed to `addItem()`. This a good example of
 how parameters are also checked whenever Phake looks at a mock object's stub map for answers. The default behavior
 of argument matching is again a loose equality check. Similar to how you would use the double equals operator in PHP.
-The other options for argument matching are discussed further in :ref:`method-parameter-matchers-section`.
+The other options for argument matching are discussed further in [Method Parameter Matchers](./method-parameter-matchers.md).
 
 Stubbing Consecutive Calls
 --------------------------
@@ -477,12 +477,12 @@ class ItemGroupTest extends PHPUnit\Framework\TestCase
 }
 ```
 
-You will notice a few of differences between this example and the example in :ref:`stubbing-multiple-calls`. The first
+You will notice a few of differences between this example and the example in [Stubbing Multiple Calls](#stubbing-multiple-calls). The first
 difference is that there is only one call to `Phake::when()`. The second difference is that I have chained together three
 calls to `thenReturn()`. The third difference is instead of passing one of my mock Item
 objects I have passed the result of the `Phake::anyParameters()` method. This is a special argument
 matcher in Phake that essentially says match any call to the method regardless of the number of parameters or the
-value of those parameters. You can learn more about `Phake::anyParameters()` in :ref:`wildcard-parameters`.
+value of those parameters. You can learn more about `Phake::anyParameters()` in [Wildcard Parameters](./method-parameter-matchers.md#wildcard-parameters).
 
 So, this single call to `Phake::when()` is saying: "Whenever a call to `$cart->addItem()`
 is made, regardless of the parameters, return 10 for the first call, 20 for the second call, and 30 for the third
@@ -495,7 +495,7 @@ Stubbing Reference Parameters
 
 Occasionally you may run into code that utilizes reference parameters to provide additional output
 from a method. This is not an uncommon thing to run into with legacy code. Phake provides a custom
-parameter matcher (these are discussed further in :ref:`method-parameter-matchers-section`)
+parameter matcher (these are discussed further in [Method Parameter Matchers](./method-parameter-matchers.md))
 that allows you to set reference parameters. It can be accessed using `Phake::setReference()`.
 The only parameter to this matcher is the value you would like to set the reference parameter
 to provided all other parameters match.

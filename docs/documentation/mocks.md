@@ -11,10 +11,10 @@ $mock = Phake::mock(ClassToMock::class);
 The `$mock` variable is now an instance of a generated class that inherits from `ClassToMock` with hooks that allow
 you to force functions to return known values. By default, all methods on a mock object will return the type specified
 in the return type or null. This behavior can be overridden on a per method and even per parameter basis. This will be
-covered in depth in :ref:`method-stubbing-section`.
+covered in depth in [Method Stubbing](./stubbing.md).
 
 The mock  will also record all calls made to this class so that you can later verify that specific methods were called
-with the proper parameters. This will be covered in depth in :ref:`method-verification-section`.
+with the proper parameters. This will be covered in depth in [Method Verification](./method-verification.md).
 
 In addition to classes you can also mock interfaces directly. This is done in much the same way as a class name, you
 simply pass the interface name as the first parameter to `Phake::mock()`.
@@ -35,7 +35,7 @@ Partial Mocks
 
 When testing legacy code, you may find that a better default behavior for the methods is to actually call the original
 method. This can be accomplished by stubbing each of the methods to return `thenCallParent()`. You can learn more
-about this in :ref:`then-call-parent`.
+about this in [Calling the Parent](./answers.md#calling-the-parent).
 
 While this is certainly possible, you may find it easier to just use a partial mock in Phake. Phake partial mocks also
 allow you to call the actual constructor of the class being mocked. They are created using `Phake::partialMock()`.
@@ -91,8 +91,8 @@ original class. However, using `Phake::makeVisible()` and `Phake::makeStaticsVis
 invocation of instance methods and static methods accordingly. Both of these methods accept a mock object as its only
 parameter and returns a proxy class that you can invoke the methods on. Method calls on these proxies will still
 return whatever value was previously stubbed for that method call. So if you intend on the original method being called
-and you aren't using :ref:`partial-mocks`, then you can just enable :ref:`calling-the-parent` for that method call using
-the `thenCallParent()` answer. This is all discussed in greater depth in :ref:`method-stubbing` and :ref:`answers`.
+and you aren't using [Partial Mocks](#partial-mocks), then you can just enable [calling the parent](./answers.md#calling-the-parent) for that method call using
+the `thenCallParent()` answer. This is all discussed in greater depth in [Method Stubbing](./stubbing.md) and [Answers](./answers.md).
 
 ```php-inline
 class MyClass

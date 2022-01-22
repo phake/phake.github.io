@@ -10,6 +10,7 @@ extra_css:
 markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.highlight:
+      auto_title: false
       extend_pygments_lang:
         - name: php-inline
           lang: php

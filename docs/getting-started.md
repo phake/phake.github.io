@@ -16,6 +16,11 @@ composer require --dev phake/phake
 Install from Source
 -------------------
 You can also clone a copy of Phake from the [Phake GitHub repository](https://github.com/phake/phake>).
+
+```{.console}
+git clone https://github.com/phake/phake.git
+```
+
 Every attempt is made to keep the master branch stable and this should be usable for those that
 immediately need features before they get released or in the event that you enjoy the bleeding edge.
 Always remember, until something goes into a rc state, there is always a chance that the functionality
@@ -27,5 +32,3 @@ Support
 
 If you think you have found a bug or an issue with Phake, please feel free to open up an issue on the
 [Phake Issue Tracker ](https://github.com/phake/phake/issues).
-
-

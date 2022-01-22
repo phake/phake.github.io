@@ -39,7 +39,7 @@ Verifying Method Parameters
 ---------------------------
 
 Verifying method parameters using Phake is very simple yet can be very flexible. There are a wealth of options for
-matching parameters that are discussed later on in :ref:`method-parameter-matchers-section`.
+matching parameters that are discussed later on in [Method Parameter Matchers](./method-parameter-matchers.md).
 
 Verifying Multiple Invocations
 ------------------------------
