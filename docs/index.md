@@ -1,5 +1,4 @@
 ---
-hide:
-- navigation
+template: overrides/home.html
+title: Material for MkDocs
 ---
-# Phake PHP Mocking Framework

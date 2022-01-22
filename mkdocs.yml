@@ -23,11 +23,11 @@ copyright: "&copy; 2022 Created and maintained by <a href=\"https://github.com/m
 
 theme:
   name: material
+  custom_dir: theme
   features:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
-    - navigation.indexes
     - toc.integrate
   palette:
     - scheme: default
@@ -40,9 +40,10 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Introduction: introduction.md
+  - Home: index.md
   - Getting started: getting-started.md
   - Documentation:
+    - Introduction: documentation/index.md
     - Creating Mocks: documentation/mocks.md
     - Method Stubbing: documentation/stubbing.md
     - Method Verification: documentation/method-verification.md

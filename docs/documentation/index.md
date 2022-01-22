@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 Introduction to Phake
 =====================
 

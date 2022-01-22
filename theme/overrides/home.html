@@ -1,0 +1,28 @@
+{% extends "overrides/main.html" %}
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.b84289b2.min.css' | url }}">
+{% endblock %}
+{% block tabs %}
+  {{ super() }}
+  <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}</style>
+  <section class="mdx-container">
+    <div class="md-grid md-typeset">
+      <div class="mdx-hero">
+        <div class="mdx-hero__image">
+          <img src="assets/images/home.webp" alt="" width="600" height="467" draggable="false">
+        </div>
+        <div class="mdx-hero__content">
+		  <h1>Phake<br />PHP Mocking Framework</h1>
+          <a href="{{ 'getting-started/' | url }}" title="Getting started" class="md-button md-button--primary">
+            Getting started
+          </a>
+          <a href="{{ 'documentation/' | url }}" title="Documentation" class="md-button">
+            Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
