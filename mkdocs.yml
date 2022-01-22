@@ -18,12 +18,16 @@ markdown_extensions:
             startinline: true
   - pymdownx.superfences
 
+copyright: "&copy; 2022 Created and maintained by <a href=\"https://github.com/mlively\">Mike Lively</a>, <a href=\"https://github.com/bfeaver\">Brian Feaver</a> and <a href=\"https://github.com/adoy\">Pierrick Charron</a>."
+
+
 theme:
   name: material
   features:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - toc.integrate
   palette:
     - scheme: default
@@ -35,9 +39,8 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
 
-
 nav:
-  - Introduction to Phake: introduction.md
+  - Introduction: introduction.md
   - Getting started: getting-started.md
   - Documentation:
     - Creating Mocks: documentation/mocks.md

@@ -1,12 +1,8 @@
-Configuration
-=============
-
 There are some options you can use to configure and customize Phake. None of these options are required and
 Phake can always just be used straight out of the box, however some configuration options are available to
 provide more convenient integration with PHPUnit and ability to debug your mock objects.
 
-Setting the Phake Client
-------------------------
+## Setting the Phake Client
 
 While Phake does not have a direct dependency on PHPUnit, there is a PHPUnit specific client that improves
 error reporting and allows you to utilize strict mode with PHPUnit. Without using the PHPUnit client, any
@@ -25,8 +21,7 @@ require_once('Phake.php');
 Phake::setClient(Phake::CLIENT_PHPUNIT);
 ```
 
-Setting the Mock Class Loader
------------------------------
+## Setting the Mock Class Loader
 
 When generating mock classes, Phake will load them into memory utilizing the PHP ``eval()`` function. This can
 make the code inside of mock classes difficult to debug or diagnose when errors occur in this code. Using
