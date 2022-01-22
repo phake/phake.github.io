@@ -3,6 +3,7 @@ repo_name: "phake/phake"
 repo_url: https://github.com/phake/phake
 site_url: https://phake.github.io/
 edit_uri: ""
+docs_dir: src
 
 extra_css:
   - stylesheets/extra.css
