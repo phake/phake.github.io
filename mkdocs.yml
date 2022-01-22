@@ -1,0 +1,19 @@
+site_name: Phake - PHP Mocking Framework
+repo_name: "phake/phake"
+repo_url: https://github.com/phake/phake
+site_url: https://phake.github.io/
+
+theme:
+  name: material
+
+nav:
+  - Introduction to Phake: introduction.md
+  - Getting started: getting-started.md
+  - Documentation:
+    - Creating Mocks: documentation/mocks.md
+    - Method Stubbing: documentation/stubbing.md
+    - Method Verification: documentation/method-verification.md
+    - Mocking Static Methods: documentation/mocking-statics.md
+    - Answers: documentation/answers.md
+    - Method Parameter Matchers: documentation/method-parameter-matchers.md
+    - Configuration: documentation/configuration.md
