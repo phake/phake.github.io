@@ -2,9 +2,28 @@ site_name: Phake - PHP Mocking Framework
 repo_name: "phake/phake"
 repo_url: https://github.com/phake/phake
 site_url: https://phake.github.io/
+edit_uri: ""
+
+extra_css:
+  - stylesheets/extra.css
 
 theme:
   name: material
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
 
 nav:
   - Introduction to Phake: introduction.md
