@@ -52,14 +52,14 @@ nav:
   - Home: index.md
   - Getting started: getting-started.md
   - Documentation:
-    - Introduction: documentation/index.md
-    - Creating Mocks: documentation/mocks.md
-    - Method Stubbing: documentation/stubbing.md
-    - Method Verification: documentation/method-verification.md
-    - Mocking Static Methods: documentation/mocking-statics.md
-    - Answers: documentation/answers.md
-    - Method Parameter Matchers: documentation/method-parameter-matchers.md
-    - Configuration: documentation/configuration.md
+    - Introduction: doc/index.md
+    - Creating Mocks: doc/mocks.md
+    - Method Stubbing: doc/stubbing.md
+    - Method Verification: doc/method-verification.md
+    - Mocking Static Methods: doc/mocking-statics.md
+    - Answers: doc/answers.md
+    - Method Parameter Matchers: doc/method-parameter-matchers.md
+    - Configuration: doc/configuration.md
 
 plugins:
   - search:
