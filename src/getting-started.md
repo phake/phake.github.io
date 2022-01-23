@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-Phake 4.0 depends on PHP 7.1 or greater. It has no dependency on PHPUnit and should be usable with
+**Phake 4** depends on PHP 7.1 or greater. It has no dependency on PHPUnit and should be usable with
 any version of PHPUnit compatible with your PHP version.
 
 Composer Install
