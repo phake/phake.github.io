@@ -9,7 +9,7 @@ stubbing allows an object method to be forced to return a particular value given
 Imagine I was in the process of building the next great online shopping cart. The first thing any
 good shopping cart allows is to be able to add items. The most important thing I want to know from
 the shopping cart is how much money in merchandise is in there. So, I need to make myself a
-ShoppingCart class. I also am going to need some class to define my items.
+`ShoppingCart` class. I also am going to need some class to define my items.
 I am more worried about the money right now and because of that I am keenly aware that any item
 in a shopping cart is going to have a price. So I will just create an interface to represent those
 items called Item. Now take a minute to marvel at the creativity of those
@@ -174,14 +174,14 @@ method being implemented in these new classes does a few different things. The f
 the fact that the method was called and stores the parameters that were used to call it. The next significant thing
 it does is looks at the stub map for that mock object. The stub map is a map that associates answers to method matchers.
 An answer is what a mocked object will return when it is called. By default, a call to a mock object returns a static
-answer of NULL. We will discuss answers more in [Answers](./answers.md). A method matcher has two parts. The
+answer of `NULL`. We will discuss answers more in [Answers](./answers.md). A method matcher has two parts. The
 first is the method name. The second is an array of arguments. The array of arguments will then contain various constraints
 that are applied to each argument to see if a given argument will match. The most common constraint is an equality constraint
 that will match loosely along the same lines as the double equals sign in PHP. We will talk about matchers more in
 [Method Parameter Matchers](./method-parameter-matchers.md).
 
 When each mock object is initially created, its stub map will be empty. This means that any call to a method on a mock object
-is going to return a default answer of NULL. If you want your mock object's methods to return something else you must add answers
+is going to return a default answer of `NULL`. If you want your mock object's methods to return something else you must add answers
 to the stub map. The `Phake::when()` method allows you to map an answer to a method matcher for a given mock object.
 The mock object you want to add the mapping to is passed as the first parameter to `Phake::when()`. The
 `Phake::when()` method will then return a proxy that can be used add answers to your mock object's stub
@@ -191,7 +191,7 @@ The `getPrice()` call here was telling Phake that I am about to define a new ans
 any time `$this->item->getPrice()` is called in my code. The call to `$this->item->getPrice()`
 returns another object that you can set the answer on using Phake's fluent api. In the example I called
 `Phake::when($this->item1)->getPrice()->thenReturn(100)`. The `thenReturn()` method will
-bind a static answer to a matcher for `getPrice()` in the stub map for $this->item1.
+bind a static answer to a matcher for `getPrice()` in the stub map for `$this->item1`.
 
 Overwriting Existing Stubs
 --------------------------
@@ -670,7 +670,7 @@ You can also change the default stubbing for mocks created with `Phake::mock()`.
 parameter to `Phake::mock()` in conjunction with the `Phake::ifUnstubbed()` method. The second parameter to
 `Phake::mock()` is reserved for configuring the behavior of an individual mock. `Phake::ifUnstubbed()` allows you
 to specify any of the matchers mentioned above as the default answer if any method invocation is not explicitly
-stubbed. If this configuration directive is not provided then the method will return NULL by default. An example of
+stubbed. If this configuration directive is not provided then the method will return `NULL` by default. An example of
 this can be seen below.
 
 ```php-inline
@@ -723,7 +723,7 @@ class MagicClassTest extends PHPUnit\Framework\TestCase
 
 If for any reason you need to explicitly stub calls to `__call()` then you can use `Phake::whenCallMethodWith()`.
 The matchers passed to `Phake::whenCallMethod()` will be matched to the method name and array of arguments similar to
-what you would expect to be passed to a `__call()` method. You can also use Phake::anyParameters() instead.
+what you would expect to be passed to a `__call()` method. You can also use `Phake::anyParameters()` instead.
 
 ```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase

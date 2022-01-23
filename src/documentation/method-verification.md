@@ -241,7 +241,7 @@ class MagicClass
 }
 ```
 
-You could mock an invocation of the `__call()` method through a userspace call to magicCall() with the following code.
+You could mock an invocation of the `__call()` method through a userspace call to `magicCall()` with the following code.
 
 ```php-inline
 class MagicClassTest extends PHPUnit\Framework\TestCase

@@ -127,7 +127,7 @@ legacy classes often require a significant amount of setup within fixtures to al
 protected methods. If you are only intending on refactoring the private and protected method then using
 `Phake::makeVisible()` removes the need for these complex fixtures.
 
-Consider this really poor object oriented code. The cleanRowContent() function does some basic text processing such as
+Consider this really poor object oriented code. The `cleanRowContent()` function does some basic text processing such as
 stripping html tags, cleaning up links, etc. It turns out that the original version of this method is written in a very
 unperformant manner and I have been tasked with rewriting it.
 
@@ -164,7 +164,7 @@ class MyReallyTerribleOldClass
 }
 ```
 
-If I was about to make changes to cleanRowContent and wanted to make sure I didn't break previous functionality, in order to
+If I was about to make changes to `cleanRowContent` and wanted to make sure I didn't break previous functionality, in order to
 do so with the traditional fixture I would have to write a test similar to the following:
 
 ```php-inline
@@ -191,7 +191,7 @@ class Test extends PHPUnit\Framework\TestCase
 ```
 
 Using test helpers or PHPUnit data providers I could reuse this test to make sure I fully cover the various logic paths
-and use cases for the cleanRowContent(). However this test is doing alot of work to just set up this scenario. Whenever
+and use cases for the `cleanRowContent()`. However this test is doing alot of work to just set up this scenario. Whenever
 your test is hitting code not relevant to your test in increases the test's fragility. Here is how you could test the
 same code using `Phake::makeVisible()`.
 

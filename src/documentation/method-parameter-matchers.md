@@ -6,7 +6,7 @@ understand exactly which calls need to be verified or stubbed. Phake provides se
 matches.
 
 The most common scenario for matching parameters as you use mock objects is matching on equal variables For this reason
-the default matcher will ensure that the parameter you pass to the mock method is equal (essentially using the '=='
+the default matcher will ensure that the parameter you pass to the mock method is equal (essentially using the `==`
 notation) to the parameter passed to the actual invocation before validating the call or returning the mocked stub. So
 going back to the card game demonstration from the introduction. Consider the following interface:
 

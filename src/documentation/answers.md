@@ -10,7 +10,7 @@ Throwing Exceptions
 Exception handling is a common aspect of most object oriented systems that should be tested. The key to being able to
 test your exception handling is to be able to control the throwing of your exceptions. Phake allows this using the
 `thenThrow()` answer. This answer allows you to throw a specific exception from any mocked method. Below is an
-example of a piece of code that catches an exception from the method foo() and then logs a message with the exception
+example of a piece of code that catches an exception from the method `foo()` and then logs a message with the exception
 message.
 
 ```php-inline

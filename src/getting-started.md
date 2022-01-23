@@ -15,7 +15,7 @@ composer require --dev phake/phake
 
 Install from Source
 -------------------
-You can also clone a copy of Phake from the [Phake GitHub repository](https://github.com/phake/phake>).
+You can also clone a copy of Phake from the [Phake GitHub repository](https://github.com/phake/phake).
 
 ```{.console}
 git clone https://github.com/phake/phake.git
