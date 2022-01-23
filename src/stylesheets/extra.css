@@ -1,3 +1,11 @@
 :root {
-  --md-primary-fg-color:        #4F5B93;
+  --md-primary-fg-color:  #4F5B93;
 }
+
+.highlight .k { color: #539d0f; }
+.highlight .nv { color: #2da6ae; }
+.highlight .o { color: #b26911; }
+.highlight .p { color: #7b5981; }
+.highlight .mi { color: #cd0f0f; }
+
+.md-container .md-typeset p code { color: #db3e3e; }
