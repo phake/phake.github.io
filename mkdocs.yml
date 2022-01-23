@@ -31,6 +31,7 @@ copyright: "&copy; 2022 Created and maintained by <a href=\"https://github.com/m
 theme:
   name: material
   custom_dir: theme
+  logo: assets/images/phake-white.svg
   features:
     - search.suggest
     - search.highlight

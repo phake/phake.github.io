@@ -9,3 +9,5 @@
 .highlight .mi { color: #cd0f0f; }
 
 .md-container .md-typeset p code { color: #db3e3e; }
+
+.md-header__button.md-logo :-webkit-any(img,svg) { height: 2rem; }
