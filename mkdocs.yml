@@ -32,6 +32,8 @@ theme:
   name: material
   custom_dir: theme
   features:
+    - search.suggest
+    - search.highlight
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
@@ -58,3 +60,7 @@ nav:
     - Answers: documentation/answers.md
     - Method Parameter Matchers: documentation/method-parameter-matchers.md
     - Configuration: documentation/configuration.md
+
+plugins:
+  - search:
+      separator: '[\s\-\.\:]'
