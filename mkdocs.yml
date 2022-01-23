@@ -5,6 +5,9 @@ site_url: https://phake.github.io/
 edit_uri: "https://github.com/phake/phake.github.io/tree/master/src"
 docs_dir: src
 
+site_description: |
+  Modern PHP Mocking Framwork for PHP7 and PHP8.
+
 extra_css:
   - stylesheets/extra.css
 
