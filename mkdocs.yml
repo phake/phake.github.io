@@ -24,6 +24,8 @@ markdown_extensions:
           options:
             startinline: true
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 copyright: "&copy; 2022 Created and maintained by <a href=\"https://github.com/mlively\">Mike Lively</a>, <a href=\"https://github.com/bfeaver\">Brian Feaver</a> and <a href=\"https://github.com/adoy\">Pierrick Charron</a>."
 
@@ -61,6 +63,8 @@ nav:
     - Answers: doc/answers.md
     - Method Parameter Matchers: doc/method-parameter-matchers.md
     - Configuration: doc/configuration.md
+    - Cookbooks:
+      - doc/cookbooks/annotations.md
   - cheat-sheet.md
 
 plugins:
