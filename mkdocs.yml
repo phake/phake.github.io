@@ -61,6 +61,7 @@ nav:
     - Answers: doc/answers.md
     - Method Parameter Matchers: doc/method-parameter-matchers.md
     - Configuration: doc/configuration.md
+  - cheat-sheet.md
 
 plugins:
   - search:

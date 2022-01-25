@@ -27,6 +27,12 @@ Always remember, until something goes into a rc state, there is always a chance 
 may change. However as an early adopter that uses GitHub, you can have a chance to mold the software
 as it is built.
 
+Have fun using Phake
+--------------------
+
+Once **Phake** is installed you can start having fun with it.<br />
+To learn how to use it we recommend you to read the [full documentation](./doc/index.md) but if you're in a hurry or impatient you can refer to our [Cheat sheet](./cheat-sheet.md).
+
 Support
 -------
 
