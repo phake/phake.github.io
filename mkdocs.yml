@@ -70,3 +70,8 @@ nav:
 plugins:
   - search:
       separator: '[\s\-\.\:]'
+
+extra:
+  analytics:
+    provider: google
+    property: G-ZH298BGVL6
