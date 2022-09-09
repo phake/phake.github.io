@@ -43,7 +43,7 @@ Phake::when($mock)->calledMethod('someParameter')->thenReturn('My return value')
 Phake::when($mock)->calledMethod('someOtherParameter')->thenReturn('My other return value');
 ```
 
-Stub calls to `calledMethod()` regaredless of parameters.
+Stub calls to `calledMethod()` regardless of parameters.
 
 ```php-inline
 $mock = Phake::mock(MyClassToMock::class);
@@ -77,13 +77,13 @@ Phake::when($mock)->calledMethod()->thenThrow(new \Exception('Some exception'));
 
 ## Method Verifications (Spies)
 
-Verify that the `calledMethod()` was called once without parameter
+Verify that the `calledMethod()` was called once without parameters
 
 ```php-inline
 Phake::verify($mock)->calledMethod();
 ```
 
-Verify that the `calledMethod()` was called once with a specific param
+Verify that the `calledMethod()` was called once with a specific parameter
 
 ```php-inline
 Phake::verify($mock)->calledMethod('param');
@@ -113,7 +113,7 @@ Verify that the `calledMethod()` was never called without parameters
 Phake::verify($mock, Phake::never())->calledMethod();
 ```
 
-Verify that mock did not received any interaction
+Verify that mock did not receive any interaction
 
 ```php-inline
 Phake::verifyNoInteraction($mock);
