@@ -132,8 +132,7 @@ class FooTest extends PHPUnit\Framework\TestCase
 ```
 
 If you are familiar with `Phake::anyParameters()` then you will recognize that the shorthand functionality is really
-just short hand of `Phake::anyParameters()`. You can still use `Phake::anyParameters()` but it will likely be
-deprecated at some point in the future.
+just short hand of `Phake::anyParameters()`.
 
 ### Default and Variable Parameters
 
