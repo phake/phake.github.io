@@ -1,0 +1,1161 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Modern PHP Mocking Framwork for PHP7 and PHP8.
+">
+      
+      
+      
+        <link rel="canonical" href="https://phake.github.io/doc/method-parameter-matchers/">
+      
+      
+        <link rel="prev" href="../answers/">
+      
+      
+        <link rel="next" href="../configuration/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Method Parameter Matchers - Phake - PHP Mocking Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-ZH298BGVL6"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-ZH298BGVL6",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-ZH298BGVL6",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#method-parameter-matchers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Phake - PHP Mocking Framework" class="md-header__button md-logo" aria-label="Phake - PHP Mocking Framework" data-md-component="logo">
+      
+  <img src="../../assets/images/phake-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Phake - PHP Mocking Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Method Parameter Matchers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/phake/phake" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    phake/phake
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/" class="md-tabs__link">
+        
+  
+    
+  
+  Getting started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cheat-sheet/" class="md-tabs__link">
+        
+  
+    
+  
+  Cheat sheet
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Phake - PHP Mocking Framework" class="md-nav__button md-logo" aria-label="Phake - PHP Mocking Framework" data-md-component="logo">
+      
+  <img src="../../assets/images/phake-white.svg" alt="logo">
+
+    </a>
+    Phake - PHP Mocking Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/phake/phake" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    phake/phake
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stubbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Method Stubbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Method Verification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking-statics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking Static Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Answers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Method Parameter Matchers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Method Parameter Matchers
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-phpunit-matchers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PHPUnit Matchers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hamcrest-matchers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Hamcrest Matchers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcard-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wildcard Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wildcard Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-and-variable-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default and Variable Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-capturing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Capturing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-parameter-matchers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Parameter Matchers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cookbooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Cookbooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookbooks/annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheat-sheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="method-parameter-matchers">Method Parameter Matchers<a class="headerlink" href="#method-parameter-matchers" title="Permanent link"> ¶</a></h1>
+<p>The verification and stubbing functionality in Phake both rely heavily on parameter matching to help the system
+understand exactly which calls need to be verified or stubbed. Phake provides several options for setting up parameter
+matches.</p>
+<p>The most common scenario for matching parameters as you use mock objects is matching on equal variables For this reason
+the default matcher will ensure that the parameter you pass to the mock method is equal (essentially using the <code>==</code>
+notation) to the parameter passed to the actual invocation before validating the call or returning the mocked stub. So
+going back to the card game demonstration from the introduction. Consider the following interface:</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span> <span class="nx">DealerStrategy</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deal</span><span class="p">(</span><span class="nx">CardCollection</span> <span class="nv">$deck</span><span class="p">,</span> <span class="nx">PlayerCollection</span> <span class="nv">$players</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here we have a <code>deal()</code> method that accepts two parameters. If you want to verify that <code>deal()</code> was called, chances
+are very good that you want to verify the the parameters as well. To do this is as simple as passing those parameters
+to the <code>deal()</code> method on the <code>Phake::verify($deal)</code> object just as you would if you were calling the actual
+<code>deal()</code> method itself. Here is a short albeit silly example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// I don&#39;t have Concrete versions of CardCollection or PlayerCollection yet</span>
+<span class="nv">$deck</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">CardCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+
+<span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">DealerStrategy</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="nv">$dealer</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">);</span>
+
+<span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">);</span>
+</code></pre></div>
+<p>In this example, if I were to have accidentally made the call to <code>deal()</code> with a property that was set to null as the
+first parameter then my test would fail with the following exception</p>
+<div class="highlight"><pre><span></span><code><span class="go">Expected DealerStrategy-&gt;deal(equal to &lt;object:CardCollection&gt;, equal to &lt;object:PlayerCollection&gt;) to be called exactly 1 times, actually called 0 times.</span>
+<span class="go">Other Invocations:</span>
+<span class="go">  PhakeTest_MockedClass-&gt;deal(&lt;null&gt;, equal to &lt;object:PlayerCollection&gt;)</span>
+</code></pre></div>
+<p>Determining the appropriate method to stub works in exactly the same way.</p>
+<p>There may be cases when it is necessary to verify or stub parameters based on something slightly more complex then
+basic equality. This is what we will talk about next.</p>
+<h2 id="using-phpunit-matchers">Using PHPUnit Matchers<a class="headerlink" href="#using-phpunit-matchers" title="Permanent link"> ¶</a></h2>
+<p>Phake was developed with PHPUnit in mind. It is not dependent on PHPUnit, however if PHPUnit is your testing framework
+of choice there is some special integration available. Any constraints made available by the PHPUnit framework will
+work seamlessly inside of Phake. Here is an example of how the <a href="https://phpunit.de/manual/current/en/appendixes.assertions.html#appendixes.assertions.assertThat.tables.constraints">PHPUnit constraints </a> can be used:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestPHPUnitConstraint</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDealNumberOfCards</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$deck</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">CardCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">DealerStrategy</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$dealer</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">greaterThan</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>I have added another parameter to my <code>deal()</code> method that allows me to specify the number of cards to deal to each
+player. In the test above I wanted to verify that the number passed to this parameter was greater than 10.</p>
+<p>For a list of the constraints you have available to you through PHPUnit, I recommend reading the PHPUnit's
+documentation on assertions and constraints. Any constraint that can be used with <code>assertThat()</code> in PHPUnit can also
+be used in Phake.</p>
+<h2 id="using-hamcrest-matchers">Using Hamcrest Matchers<a class="headerlink" href="#using-hamcrest-matchers" title="Permanent link"> ¶</a></h2>
+<p>If you do not use PHPUnit, Phake also supports <a href="https://github.com/hamcrest/hamcrest-php#this-is-the-php-port-of-hamcrest-matchers">Hamcrest matchers </a>. This is in-line with the Phake's design goal of being
+usable with any testing framework. Here is a repeat of the PHPUnit example, this time using SimpleTest and Hamcrest
+matchers.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestHamcrestMatcher</span> <span class="k">extends</span> <span class="nx">UnitTestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDealNumberOfCards</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$deck</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">CardCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">DealerStrategy</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$dealer</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nv">$deck</span><span class="p">,</span> <span class="nv">$players</span><span class="p">,</span> <span class="nx">greaterThan</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="wildcard-parameters">Wildcard Parameters<a class="headerlink" href="#wildcard-parameters" title="Permanent link"> ¶</a></h2>
+<p>Frequently when stubbing methods, you do not really care about matching parameters. Often times matching every
+parameter for a stub can result in overly brittle tests. If you find yourself in this situation you can use Phake's
+shorthand stubbing to instruct Phake that a mock should be stubbed on any invocation. You could also use it to verify a
+method call regardless of parameters. This is not a very common use case but it is possible.</p>
+<p>To specify that a given stub or verification method should match any parameters, you call the method you are stubbing
+or mocking as a property of <code>Phake::when()</code> or <code>Phake::verify()</code>. The code below will mock any invocation of
+<code>$obj-&gt;foo()</code> regardless of parameters to return bar.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAddItemsToCart</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$obj</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyObject</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$obj</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">foo</span><span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">(</span><span class="s1">&#39;a parameter&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">(</span><span class="s1">&#39;multiple&#39;</span><span class="p">,</span> <span class="s1">&#39;parameters&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you are familiar with <code>Phake::anyParameters()</code> then you will recognize that the shorthand functionality is really
+just short hand of <code>Phake::anyParameters()</code>.</p>
+<h3 id="default-and-variable-parameters">Default and Variable Parameters<a class="headerlink" href="#default-and-variable-parameters" title="Permanent link"> ¶</a></h3>
+<p>Wildcards can also come in handy when stubbing or verifying methods with default parameters or variable parameters. In
+addition to <code>Phake::anyParameters()</code>, <code>Phake::ignoreRemaining()</code> can be used to instruct Phake to not attempt to
+match any further parameters.</p>
+<p>A good example of where this could be handy is if you are mocking or verifying a method where the first parameter is
+important to stubbing but maybe the remaining parameters aren't. The code below stubs a factory method where the first
+parameter sets an item's name, but the remaining parameters are all available as defaults.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createItem</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="nv">$size</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUsingItemFactory</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$factory</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyFactory</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">createItem</span><span class="p">(</span><span class="s1">&#39;Item1&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;small&#39;</span><span class="p">);</span>
+
+        <span class="c1">//Verification below will succeed</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$factory</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">createItem</span><span class="p">(</span><span class="s1">&#39;Item1&#39;</span><span class="p">,</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">ignoreRemaining</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="parameter-capturing">Parameter Capturing<a class="headerlink" href="#parameter-capturing" title="Permanent link"> ¶</a></h2>
+<p>As you can see there are a variety of methods for verifying that the appropriate parameters are being passed to
+methods. However, there may be times when the prebuilt constraints and matchers simply do not fit your needs. Perhaps
+there is method that accepts a complex object where only certain components of the object need to be validated.
+Parameter capturing will allow you to store the parameter that was used to call your method so that it can be used in
+assertions later on.</p>
+<p>Consider the following example where I have defined a <code>getNumberOfCards()</code> method on the <code>CardCollection</code> interface.</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span> <span class="nx">CardCollection</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getNumberOfCards</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>I want to create new functionality for a my poker dealer strategy that will check to make sure we are playing with a
+full deck of 52 cards when the <code>deal()</code> call is made. It would be rather cumbersome to create a copy of a
+<code>CardCollection</code> implementation that I could be sure would match in an equals scenario. Such a test would look
+something like this.</p>
+<p>Please note, I do not generally advocate this type of design. I prefer dependency injection to instantiation. So
+please remember, this is not an example of clean design, simply an example of what you can do with argument capturing.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyPokerGameTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDealCards</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyPokerDealer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$cardGame</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyPokerGame</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">,</span> <span class="nv">$players</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="nx">Phake</span><span class="o">::</span><span class="na">capture</span><span class="p">(</span><span class="nv">$deck</span><span class="p">),</span> <span class="nv">$players</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="nv">$deck</span><span class="o">-&gt;</span><span class="na">getNumberOfCards</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can also capture parameters if they meet a certain condition. For instance, if someone mistakenly passed an array
+as the first parameter to the <code>deal()</code> method then PHPUnit would fatal error out. This can be protected against by
+using the the <code>Phake::capture()-&gt;when()</code> method. The <code>when()</code> method accepts the same constraints that
+<code>Phake::verify()</code> accepts. Here is how you could leverage that functionality to bulletproof your captures a little
+bit.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyBetterPokerGameTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDealCards</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyPokerDealer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$cardGame</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyPokerGame</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">,</span> <span class="nv">$players</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span>
+            <span class="nx">Phake</span><span class="o">::</span><span class="na">capture</span><span class="p">(</span><span class="nv">$deck</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">when</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isInstanceOf</span><span class="p">(</span><span class="nx">CardCollection</span><span class="o">::</span><span class="na">class</span><span class="p">)),</span>
+            <span class="nv">$players</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="nv">$deck</span><span class="o">-&gt;</span><span class="na">getNumberOfCards</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This could also be done by using PHPUnit's assertions later on with the captured parameter, however this also has a
+side effect of better localizing your error. Here is the error you would see if the above test failed.</p>
+<div class="highlight"><pre><span></span><code><span class="go">Exception: Expected MyPokerDealer-&gt;deal(&lt;captured parameter&gt;,</span>
+<span class="go">equal to &lt;object:PlayerCollection&gt;) to be called exactly 1</span>
+<span class="go">times, actually called 0 times.</span>
+<span class="go">Other Invocations:</span>
+<span class="go">  PhakeTest_MockedClass-&gt;deal(&lt;array&gt;,</span>
+<span class="go">&lt;object:PlayerCollection&gt;)</span>
+</code></pre></div>
+<p>It should be noted that while it is possible to use argument capturing for stubbing with <code>Phake::when()</code> I would
+discourage it. When stubbing a method, you should only be concerned about making sure an expected value is returned.
+Argument capturing in no way helps with that goal. In the worst case scenario, you will have some incredibly difficult
+test failures to diagnose.</p>
+<p>Beginning in Phake 2.1 you can also capture all values for a given parameter for every matching invocation. For
+instance imagine if you have a method <code>$foo-&gt;process($eventManager)</code> that should send a series of events.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">EventManager</span> <span class="nv">$eventManager</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="nv">$eventManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="k">new</span> <span class="nx">PreProcessEvent</span><span class="p">(</span><span class="nv">$request</span><span class="p">));</span>
+       <span class="c1">// ... do stuff</span>
+       <span class="nv">$eventManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="k">new</span> <span class="nx">PostProcessEvent</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$result</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you wanted to verify different aspects of the <code>$eventManager-&gt;fire()</code> calls this would have been very difficult
+and brittle using standard argument captors. There is now a new method <code>Phake::captureAll()</code> that can be used to
+capture all otherwise matching invocations of method. The variable passed to <code>Phake::captureAll()</code> will be set to an
+array containing all of the values used for that parameter. So with this function the following test can be written.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooTest</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testProcess</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Request</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$eventManager</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">EventManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">process</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$eventManager</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$eventManager</span><span class="p">,</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">atLeast</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="nx">Phake</span><span class="o">::</span><span class="na">captureAll</span><span class="p">(</span><span class="nv">$events</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertInstanceOf</span><span class="p">(</span><span class="nx">PreProcessEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nv">$events</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">());</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertInstanceOf</span><span class="p">(</span><span class="nx">PostProcessEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nv">$events</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$events</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-parameter-matchers">Custom Parameter Matchers<a class="headerlink" href="#custom-parameter-matchers" title="Permanent link"> ¶</a></h2>
+<p>An alternative to using argument capturing is creating custom matchers. All parameter matchers implement the interface
+<code>Phake\Matchers\IArgumentMatcher</code>. You can create custom implementations of this interface. This is especially useful
+if you find yourself using a similar capturing pattern over and over again. If I were to rewriting the test above using
+a customer argument matcher it would look something like this.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FiftyTwoCardDeckMatcher</span> <span class="k">implements</span> <span class="nx">Phake\Matchers\IArgumentMatcher</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">matches</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$argument</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nv">$argument</span> <span class="nx">instanceof</span> <span class="nx">CardCollection</span>
+            <span class="o">&amp;&amp;</span> <span class="nv">$argument</span><span class="o">-&gt;</span><span class="na">getNumberOfCards</span><span class="p">()</span> <span class="o">==</span> <span class="mi">52</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;object:CardCollection with 52 cards&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyBestPokerGameTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDealCards</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$dealer</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyPokerDealer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$players</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">PlayerCollection</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nv">$cardGame</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyPokerGame</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">,</span> <span class="nv">$players</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$dealer</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">deal</span><span class="p">(</span><span class="k">new</span> <span class="nx">FiftyTwoCardDeckMatcher</span><span class="p">(),</span> <span class="nv">$players</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 Created and maintained by <a href="https://github.com/mlively">Mike Lively</a>, <a href="https://github.com/bfeaver">Brian Feaver</a> and <a href="https://github.com/adoy">Pierrick Charron</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.tracking", "navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>

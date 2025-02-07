@@ -1,0 +1,1049 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Modern PHP Mocking Framwork for PHP7 and PHP8.
+">
+      
+      
+      
+        <link rel="canonical" href="https://phake.github.io/doc/answers/">
+      
+      
+        <link rel="prev" href="../mocking-statics/">
+      
+      
+        <link rel="next" href="../method-parameter-matchers/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Answers - Phake - PHP Mocking Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-ZH298BGVL6"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-ZH298BGVL6",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-ZH298BGVL6",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#answers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Phake - PHP Mocking Framework" class="md-header__button md-logo" aria-label="Phake - PHP Mocking Framework" data-md-component="logo">
+      
+  <img src="../../assets/images/phake-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Phake - PHP Mocking Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Answers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/phake/phake" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    phake/phake
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/" class="md-tabs__link">
+        
+  
+    
+  
+  Getting started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cheat-sheet/" class="md-tabs__link">
+        
+  
+    
+  
+  Cheat sheet
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Phake - PHP Mocking Framework" class="md-nav__button md-logo" aria-label="Phake - PHP Mocking Framework" data-md-component="logo">
+      
+  <img src="../../assets/images/phake-white.svg" alt="logo">
+
+    </a>
+    Phake - PHP Mocking Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/phake/phake" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    phake/phake
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stubbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Method Stubbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Method Verification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking-statics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking Static Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Answers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Answers
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#returning-the-object-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning the object itself
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#throwing-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Throwing Exceptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calling-the-parent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calling the Parent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capturing-a-return-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capturing a Return Value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answer-callbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Callbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Answers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method-parameter-matchers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Method Parameter Matchers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cookbooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Cookbooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookbooks/annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheat-sheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link"> ¶</a></h1>
+<p>In all of the examples so far, the <code>thenReturn()</code> answer is being used. There are other answers that are remarkably
+useful writing your tests.</p>
+<h2 id="returning-the-object-itself">Returning the object itself<a class="headerlink" href="#returning-the-object-itself" title="Permanent link"> ¶</a></h2>
+<p>When stubbing a method that can return the instance of the object itself (<code>$this</code>), it can be required to force the answer
+to be the instance of the mock. Rather than calling <code>thenReturn()</code> with the same mock variable as argument, Phake provides
+a cleaner way by calling the method <code>thenReturnSelf()</code>.
+Consider the following interface and class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span> <span class="nx">MyInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="k">static</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">useFooBar</span><span class="p">(</span><span class="nx">MyInterface</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$object</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">()</span><span class="o">?-&gt;</span><span class="na">bar</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>As <code>MyInterface::foo()</code> is not always returning the instance of the object calling, a unit test trying to cover <code>MyClass</code> that
+uses any instance of such interface would require to stub <code>static</code> as answer.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClassTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUseFooBar</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mock</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">thenReturnSelf</span><span class="p">();</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mock</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+
+        <span class="nx">self</span><span class="o">::</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="p">(</span><span class="k">new</span> <span class="nx">MyClass</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">useFooBar</span><span class="p">(</span><span class="nv">$mock</span><span class="p">));</span>
+
+        <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mock</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+
+        <span class="nx">self</span><span class="o">::</span><span class="na">assertNull</span><span class="p">((</span><span class="k">new</span> <span class="nx">MyClass</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">useFooBar</span><span class="p">(</span><span class="nv">$mock</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="throwing-exceptions">Throwing Exceptions<a class="headerlink" href="#throwing-exceptions" title="Permanent link"> ¶</a></h2>
+<p>Exception handling is a common aspect of most object oriented systems that should be tested. The key to being able to
+test your exception handling is to be able to control the throwing of your exceptions. Phake allows this using the
+<code>thenThrow()</code> answer. This answer allows you to throw a specific exception from any mocked method. Below is an
+example of a piece of code that catches an exception from the method <code>process()</code> and then logs a message with the exception
+message.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">Logger</span> <span class="nv">$logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Logger</span> <span class="nv">$logger</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">processSomeData</span><span class="p">(</span><span class="nx">MyDataProcessor</span> <span class="nv">$processor</span><span class="p">,</span> <span class="nx">MyData</span> <span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="nv">$processor</span><span class="o">-&gt;</span><span class="na">process</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In order to test this we must mock <code>process()</code> so that it throws an exception when it is called. Then we can verify that
+<code>log()</code> is called with the appropriate message.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClassTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testProcessSomeDataLogsExceptions</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$logger</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$data</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyData</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$processor</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyDataProcessor</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$processor</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">process</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">thenThrow</span><span class="p">(</span><span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;My error message!&#39;</span><span class="p">));</span>
+
+        <span class="nv">$sut</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">(</span><span class="nv">$logger</span><span class="p">);</span>
+        <span class="nv">$sut</span><span class="o">-&gt;</span><span class="na">processSomeData</span><span class="p">(</span><span class="nv">$processor</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+        <span class="c1">//This comes from the exception we created above</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$logger</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s1">&#39;My error message!&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="calling-the-parent">Calling the Parent<a class="headerlink" href="#calling-the-parent" title="Permanent link"> ¶</a></h2>
+<p>Phake provides the ability to allow calling the actual method of an object on a method by method
+basis by using the <code>thenCallParent()</code> answer. This will result in the actual method being called.
+Consider the following class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;42&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>thenCallParent()</code> answer can be used here to ensure that the actual method in the class is
+called resulting in the value 42 being returned from calls to that mocked method.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClassTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCallingParent</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyClass</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mock</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">thenCallParent</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Please avoid using this answer as much as possible especially when testing newly written code. If you find yourself
+requiring a class to be only partially mocked then that is a code smell for a class that is likely doing too much. An
+example of when this is being done is why you are testing a class that has a singular method that has a lot of side
+effects that you want to mock while you allow the other methods to be called as normal. In this case that method that
+you are desiring to mock should belong to a completely separate class. It is obvious by the very fact that you are able
+to mock it without needing to mock other messages that it performs a different function.</p>
+<p>Even though partial mocking should be avoided with new code, it is often very necessary to allow creating tests while
+refactoring legacy code, tests involving 3rd party code that can’t be changed, or new tests of already written code
+that cannot yet be changed. This is precisely the reason why this answer exists and is also why it is not the default
+answer in Phake.</p>
+<h2 id="capturing-a-return-value">Capturing a Return Value<a class="headerlink" href="#capturing-a-return-value" title="Permanent link"> ¶</a></h2>
+<p>Another tool in Phake for testing legacy code is the <code>captureReturnTo()</code> answer. This performs a function similar to
+argument capturing, however it instead captures what the actual method of a mock object returns to the variable passed
+as its parameter. Again, this should never be needed if you are testing newly written code. However I have ran across
+cases several times where legacy code calls protected factory methods and the result of the method call is never
+exposed. This answer gives you a way to access that variable to ensure that the factory was called and is operating
+correctly in the context of your method that is being tested.</p>
+<h2 id="answer-callbacks">Answer Callbacks<a class="headerlink" href="#answer-callbacks" title="Permanent link"> ¶</a></h2>
+<p>While the answers provided in Phake should be able to cover most of the scenarios you will run into when using mocks in
+your unit tests there may occasionally be times when you need more control over what is returned from your mock
+methods. When this is the case, you can use a callback answer. These do generally increase the complexity of tests and
+you really should only use them if you won't know what you need to return until call time.</p>
+<p>You can specify a callback answer using the thenReturnCallback method. This argument takes a callback or a closure.
+The callback will be passed the same arguments as were passed to the method being stubbed. This allows you to use them
+to help determine the answer.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClassTest</span> <span class="k">extends</span> <span class="nx">PHPUnit\Framework\TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCallback</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">MyClass</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mock</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">foo</span><span class="o">-&gt;</span><span class="na">thenReturnCallback</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$val</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">});</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">(</span><span class="mi">21</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-answers">Custom Answers<a class="headerlink" href="#custom-answers" title="Permanent link"> ¶</a></h2>
+<p>You can also create custom answers. All answers in Phake implement the <code>Phake\Stubber\IAnswer</code> interface. This
+interface defines a single method called <code>getAnswer()</code> that can be used to return what will be returned from a call
+to the method being stubbed. If you need to get access to how the method you are stubbing was invoked, there is a more
+complex set of interfaces that can be implemented: <code>Phake\Stubber\Answers\IDelegator</code> and
+<code>Phake\Stubber\IAnswerDelegate</code>.</p>
+<p><code>Phake\Stubber\Answers\IDelegator</code> extends <code>Phake\Stubber\IAnswer</code> and defines an additional method called
+<code>processAnswer()</code> that is used to perform processing on the results of <code>getAnswer()</code> prior to passing it on to the
+stub’s caller. <code>Phake\Stubber\IAnswerDelegate</code> defines an interface that allows you to create a callback that is
+called to generate the answer from the stub. It defines <code>getCallBack()</code> which allows you to generate a PHP callback
+based on the object, method, and arguments that a stub was called with. It also defines <code>getArguments()</code> which allows
+you to generate the arguments that will be passed to the callback based on the method name and arguments the stub was
+called with.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 Created and maintained by <a href="https://github.com/mlively">Mike Lively</a>, <a href="https://github.com/bfeaver">Brian Feaver</a> and <a href="https://github.com/adoy">Pierrick Charron</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.tracking", "navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
