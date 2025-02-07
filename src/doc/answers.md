@@ -4,6 +4,55 @@ Answers
 In all of the examples so far, the `thenReturn()` answer is being used. There are other answers that are remarkably
 useful writing your tests.
 
+Returning the object itself
+---------------------------
+
+When stubbing a method that can return the instance of the object itself (`$this`), it can be required to force the answer
+to be the instance of the mock. Rather than calling `thenReturn()` with the same mock variable as argument, Phake provides
+a cleaner way by calling the method `thenReturnSelf()`.
+Consider the following interface and class.
+
+```php-inline
+interface MyInterface
+{
+	public function foo(): ?static;
+
+	public function bar(): int;
+}
+```
+
+```php-inline
+class MyClass
+{
+	public function useFooBar(MyInterface $object): ?int
+	{
+		return $object->foo()?->bar();
+	}
+}
+```
+
+As `MyInterface::foo()` is not always returning the instance of the object calling, a unit test trying to cover `MyClass` that
+uses any instance of such interface would require to stub `static` as answer.
+
+```php-inline
+class MyClassTest extends PHPUnit\Framework\TestCase
+{
+	public function testUseFooBar(): void
+	{
+		$mock = Phake::mock(MyInterface::class);
+		Phake::when($mock)->foo()->thenReturnSelf();
+		Phake::when($mock)->bar()->thenReturn(42);
+
+		self::assertSame(42, (new MyClass())->useFooBar($mock));
+
+		$mock = Phake::mock(MyInterface::class);
+		Phake::when($mock)->foo()->thenReturn(null);
+
+		self::assertNull((new MyClass())->useFooBar($mock));
+	}
+}
+```
+
 Throwing Exceptions
 -------------------
 
